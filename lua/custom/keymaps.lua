@@ -1,3 +1,5 @@
+vim.keymap.set('n', '<leader>x', '<CMD>source %<CR>')
+
 vim.keymap.set('n', '<leader>sa', 'ggVG', { desc = '[S]elect [A]ll' })
 vim.keymap.set('n', '<leader>bq', '<CMD>q<CR>')
 vim.keymap.set('n', '<leader>bw', '<CMD>w<CR>')
