@@ -25,7 +25,7 @@ External Requirements:
   - If you want to write Golang, you will need `go`
   - etc.
 
-### Install This Neovim Config
+### Install config.nvim
 
 Neovim's configurations are located under the following paths, depending on your OS:
 
@@ -35,12 +35,12 @@ Neovim's configurations are located under the following paths, depending on your
 | Windows (cmd)| `%localappdata%\nvim\` |
 | Windows (powershell)| `$env:LOCALAPPDATA\nvim\` |
 
-#### Clone ARUMANDESU/nvim
+#### Clone ARUMANDESU/config.nvim
 
 <details><summary> Linux and Mac </summary>
 
 ```sh
-git clone https://github.com/ARUMANDESU/nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone https://github.com/ARUMANDESU/config.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
 </details>
@@ -50,13 +50,13 @@ git clone https://github.com/ARUMANDESU/nvim.git "${XDG_CONFIG_HOME:-$HOME/.conf
 If you're using `cmd.exe`:
 
 ```
-git clone https://github.com/ARUMANDESU/nvim.git "%localappdata%\nvim"
+git clone https://github.com/ARUMANDESU/config.nvim.git "%localappdata%\nvim"
 ```
 
 If you're using `powershell.exe`
 
 ```
-git clone https://github.com/ARUMANDESU/nvim.git "${env:LOCALAPPDATA}\nvim"
+git clone https://github.com/ARUMANDESU/config.nvim.git "${env:LOCALAPPDATA}\nvim"
 ```
 
 </details>
