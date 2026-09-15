@@ -655,6 +655,8 @@ require('lazy').setup({
         'typescript-language-server',
         'html-lsp',
         'css-lsp',
+        'bash-language-server',
+        'shfmt',
         -- You can add other tools here that you want Mason to install
       })
 
