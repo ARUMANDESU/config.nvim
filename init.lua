@@ -763,6 +763,10 @@ require('lazy').setup({
           -- },
         },
         opts = {},
+        config = function()
+          local ls = require 'luasnip'
+          ls.config.setup { enable_autosnippets = true }
+        end,
       },
     },
     --- @module 'blink.cmp'

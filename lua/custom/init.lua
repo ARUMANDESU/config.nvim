@@ -1,4 +1,6 @@
 require 'custom.keymaps'
+require 'custom.keymaps_luasnip'
+require 'custom.snips'
 
 local function set_neotree_highlights()
   vim.api.nvim_set_hl(0, 'NeoTreeDirectoryIcon', { fg = '#a7c080' })
