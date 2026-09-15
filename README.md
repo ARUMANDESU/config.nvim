@@ -1,78 +1,42 @@
 # nvim
 
-This is my nvim config.
-Started from [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)(pls check it out if you're new to nvim).
+My Neovim config. Started life as [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim);
+it has since been restructured and is no longer a kickstart fork in shape.
 
-## Installation
+Go-focused: gopls, delve, golangci-lint, goimports, plus custom Go snippets.
+Keymaps assume a Colemak layout in a few places (harpoon slots, window picker hints).
 
-### Install Neovim
+## Layout
 
-['stable'](https://github.com/neovim/neovim/releases/tag/stable) and latest
-['nightly'](https://github.com/neovim/neovim/releases/tag/nightly) of Neovim.
+```
+init.lua              leader, then requires lua/config/*
+lua/config/
+  options.lua         vim.o settings and diagnostic config
+  keymaps.lua         global keymaps
+  autocmds.lua        yank highlight, neo-tree highlight overrides
+  lazy.lua            lazy.nvim bootstrap + setup
+lua/plugins/          one file per plugin (or tight group); auto-imported by lazy
+lua/snippets/         luasnip snippets, loaded from the LuaSnip spec
+lua/util/             helpers used by the above
+```
 
-### Install External Dependencies
+Adding a plugin: drop a file in `lua/plugins/` returning a lazy.nvim spec table.
 
-External Requirements:
-- Basic utils: `git`, `make`, `unzip`, C Compiler (`gcc`)
-- [ripgrep](https://github.com/BurntSushi/ripgrep#installation),
-  [fd-find](https://github.com/sharkdp/fd#installation)
-- Clipboard tool (xclip/xsel/win32yank or other depending on the platform)
-- A [Nerd Font](https://www.nerdfonts.com/): optional, provides various icons
-  - if you have it set `vim.g.have_nerd_font` in `init.lua` to true
-- Emoji fonts (Ubuntu only, and only if you want emoji!) `sudo apt install fonts-noto-color-emoji`
-- Language Setup:
-  - If you want to write Typescript, you need `npm`
-  - If you want to write Golang, you will need `go`
-  - etc.
+## Requirements
 
-### Install config.nvim
+- Neovim 0.11+
+- `git`, `make`, `unzip`, a C compiler
+- [ripgrep](https://github.com/BurntSushi/ripgrep), [fd](https://github.com/sharkdp/fd)
+- A clipboard tool (`pbcopy` on macOS, `xclip`/`xsel`/`win32yank` elsewhere)
+- A [Nerd Font](https://www.nerdfonts.com/) — set `vim.g.have_nerd_font = false` in `init.lua` if you don't have one
+- Per language: `go` for Go, `npm` for the TypeScript/HTML/CSS servers
 
-Neovim's configurations are located under the following paths, depending on your OS:
-
-| OS | PATH |
-| :- | :--- |
-| Linux, MacOS | `$XDG_CONFIG_HOME/nvim`, `~/.config/nvim` |
-| Windows (cmd)| `%localappdata%\nvim\` |
-| Windows (powershell)| `$env:LOCALAPPDATA\nvim\` |
-
-#### Clone ARUMANDESU/config.nvim
-
-<details><summary> Linux and Mac </summary>
+## Install
 
 ```sh
-git clone https://github.com/ARUMANDESU/config.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
-```
-
-</details>
-
-<details><summary> Windows </summary>
-
-If you're using `cmd.exe`:
-
-```
-git clone https://github.com/ARUMANDESU/config.nvim.git "%localappdata%\nvim"
-```
-
-If you're using `powershell.exe`
-
-```
-git clone https://github.com/ARUMANDESU/config.nvim.git "${env:LOCALAPPDATA}\nvim"
-```
-
-</details>
-
-### Post Installation
-
-Start Neovim
-
-```sh
+git clone git@github.com:ARUMANDESU/nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 nvim
 ```
 
-That's it! Lazy will install all the plugins you have. Use `:Lazy` to view
-the current plugin status. Hit `q` to close the window.
-
-
-### Getting Started
-
-[The Only Video You Need to Get Started with Neovim](https://youtu.be/m8C0Cq9Uv9o)
+Lazy installs everything on first start; `:Lazy` shows plugin status, `:Mason`
+shows language servers and tools.

@@ -1,6 +1,5 @@
 return {
-
-  { -- Linting
+  {
     'mfussenegger/nvim-lint',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
@@ -12,11 +11,9 @@ return {
 
       local disabled_fts = {}
 
-      -- Apply "quiet mode" (signs only) or "full mode" (signs + underline + virtual_text)
-      -- to every linter namespace used by a given filetype.
+      -- Quiet mode keeps signs but hides underline/virtual text, per linter namespace.
       local function set_display(ft, quiet)
-        local linters = lint.linters_by_ft[ft] or {}
-        for _, linter_name in ipairs(linters) do
+        for _, linter_name in ipairs(lint.linters_by_ft[ft] or {}) do
           local ok, ns = pcall(lint.get_namespace, linter_name)
           if ok and ns then
             vim.diagnostic.config({
@@ -28,12 +25,10 @@ return {
         end
       end
 
-      local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
-        group = lint_augroup,
+        group = vim.api.nvim_create_augroup('lint', { clear = true }),
         callback = function()
-          local ft = vim.bo.filetype
-          if disabled_fts[ft] then return end
+          if disabled_fts[vim.bo.filetype] then return end
           if vim.bo.modifiable then lint.try_lint() end
         end,
       })
@@ -43,10 +38,10 @@ return {
         disabled_fts[ft] = not disabled_fts[ft]
 
         if disabled_fts[ft] then
-          set_display(ft, true) -- quiet: signs only, stop re-linting
+          set_display(ft, true)
           vim.notify('Linting quieted for ' .. ft .. ' (signs kept, text hidden)')
         else
-          set_display(ft, false) -- full display restored
+          set_display(ft, false)
           lint.try_lint()
           vim.notify('Linting enabled for ' .. ft)
         end
