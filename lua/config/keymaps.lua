@@ -20,8 +20,6 @@ map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Delete/change go to the black hole so they don't clobber the yank register.
-map({ 'n', 'v' }, 'd', '"_d')
-map({ 'n', 'v' }, 'D', '"_D')
 map({ 'n', 'v' }, 'c', '"_c')
 map({ 'n', 'v' }, 'C', '"_C')
 map({ 'n', 'v' }, 'x', '"_x')
