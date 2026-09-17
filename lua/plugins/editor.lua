@@ -22,7 +22,7 @@ return {
       spec = {
         { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>h', group = 'Git [H]unk | [H]arpoon', mode = { 'n', 'v' } },
         { '<leader>b', group = '[B]uffer' },
       },
     },

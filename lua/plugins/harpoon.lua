@@ -8,8 +8,8 @@ return {
       harpoon:setup()
 
       local map = vim.keymap.set
-      map('n', '<leader>a', function() harpoon:list():add() end, { desc = '[A]ppend to harpoon list' })
-      map('n', '<C-s>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = 'Harpoon quick menu' })
+      map('n', '<leader>ha', function() harpoon:list():add() end, { desc = '[H]arpoon [A]ppend to list' })
+      map('n', '<leader>hh', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = '[H]arpoon [H]list quick menu' }) -- `hh` is quick to type but `hl` suits more
 
       -- Colemak home row: n e i o
       for idx, key in ipairs { '<M-n>', '<M-e>', '<M-i>', '<M-o>' } do
