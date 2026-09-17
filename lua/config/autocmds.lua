@@ -16,3 +16,18 @@ vim.api.nvim_create_autocmd('ColorScheme', {
   group = vim.api.nvim_create_augroup('neotree-highlights', { clear = true }),
   callback = set_neotree_highlights,
 })
+
+-- Flash labels default to Substitute, which gruvbox paints dark orange on dark
+-- background. Use gruvbox's bright yellow/aqua instead.
+local function set_flash_highlights()
+  vim.api.nvim_set_hl(0, 'FlashLabel', { fg = '#1b1b1b', bg = '#fabd2f', bold = true })
+  vim.api.nvim_set_hl(0, 'FlashCurrent', { fg = '#1b1b1b', bg = '#8ec07c', bold = true })
+  vim.api.nvim_set_hl(0, 'FlashMatch', { fg = '#83a598', bg = '#3c3836' })
+  vim.api.nvim_set_hl(0, 'FlashBackdrop', { fg = '#665c54' })
+end
+
+set_flash_highlights()
+vim.api.nvim_create_autocmd('ColorScheme', {
+  group = vim.api.nvim_create_augroup('flash-highlights', { clear = true }),
+  callback = set_flash_highlights,
+})

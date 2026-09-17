@@ -4,7 +4,40 @@ return {
   { 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
   { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
+  {
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    ---@type Flash.Config
+    opts = { modes = { char = { enabled = false } } },
+    keys = {
+      { 'f', mode = { 'n', 'x', 'o' }, function() require('flash').jump() end, desc = 'Flash' },
+      { 'r', mode = 'o', function() require('flash').remote() end, desc = 'Remote Flash' },
+      { 'R', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search' },
+      { '<c-s>', mode = { 'c' }, function() require('flash').toggle() end, desc = 'Toggle Flash Search' },
+      {
+        'zu',
+        mode = { 'n', 'o', 'x' },
+        function()
+          require('flash').treesitter {
+            jump = { pos = 'end' },
+            label = { before = true, after = true, style = 'overlay' },
+          }
+        end,
+        desc = 'Flash Treesitter',
+      },
+      {
+        'zU',
+        mode = { 'n', 'o', 'x' },
+        function()
+          require('flash').treesitter {
+            jump = { pos = 'start' },
+            label = { before = true, after = true, style = 'overlay' },
+          }
+        end,
+        desc = 'Flash Treesitter',
+      },
+    },
+  },
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
