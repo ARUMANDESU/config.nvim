@@ -9,6 +9,13 @@ return {
         go = { 'golangcilint' },
       }
 
+      lint.linters.markdownlint.args = {
+        '--disable',
+        'MD013',
+        'MD007',
+        '--', -- Required
+      }
+
       local disabled_fts = {}
 
       -- Quiet mode keeps signs but hides underline/virtual text, per linter namespace.
