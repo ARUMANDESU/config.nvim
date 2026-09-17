@@ -7,8 +7,7 @@ map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]ui
 
 map('n', '<leader>sx', '<CMD>source %<CR>', { desc = '[S]ource current file' })
 map('n', '<leader>sa', 'ggVG', { desc = '[S]elect [A]ll' })
-map('n', '<leader>bq', '<CMD>q<CR>', { desc = '[B]uffer [Q]uit' })
-map('n', '<leader>bw', '<CMD>w<CR>', { desc = '[B]uffer [W]rite' })
+
 map('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true, desc = 'Make file executable' })
 
 map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selected lines up' })
