@@ -22,6 +22,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         go = { 'goimports' },
+        templ = { 'templ' },
       },
     },
   },

@@ -73,6 +73,7 @@ return {
         'css-lsp',
         'bash-language-server',
         'shfmt',
+        'templ',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
