@@ -74,6 +74,9 @@ return {
         'bash-language-server',
         'shfmt',
         'templ',
+        'postgres-language-server',
+        'sqls',
+        'sqruff', -- sql formatter
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

@@ -23,6 +23,7 @@ return {
         lua = { 'stylua' },
         go = { 'goimports' },
         templ = { 'templ' },
+        sql = { 'sqruff' },
       },
     },
   },
