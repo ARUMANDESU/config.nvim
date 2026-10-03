@@ -25,6 +25,7 @@ return {
         templ = { 'templ' },
         sql = { 'sqruff' },
         dockerfile = { 'dockerfmt' },
+        makefile = { 'mbake' },
       },
     },
   },

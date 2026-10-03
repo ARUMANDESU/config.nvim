@@ -80,6 +80,7 @@ return {
         'docker-language-server', -- lint/hover for Dockerfile, everything for compose
         'dockerfile-language-server', -- the only one with Dockerfile instruction completion
         'dockerfmt',
+        'mbake',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

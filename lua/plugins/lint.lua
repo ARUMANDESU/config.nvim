@@ -7,6 +7,7 @@ return {
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
         go = { 'golangcilint' },
+        makefile = { 'mbake' },
       }
 
       lint.linters.markdownlint.args = {
