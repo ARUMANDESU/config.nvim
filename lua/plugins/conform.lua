@@ -24,6 +24,7 @@ return {
         go = { 'goimports' },
         templ = { 'templ' },
         sql = { 'sqruff' },
+        dockerfile = { 'dockerfmt' },
       },
     },
   },

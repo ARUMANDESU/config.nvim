@@ -77,6 +77,9 @@ return {
         'postgres-language-server',
         'sqls',
         'sqruff', -- sql formatter
+        'docker-language-server', -- lint/hover for Dockerfile, everything for compose
+        'dockerfile-language-server', -- the only one with Dockerfile instruction completion
+        'dockerfmt',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

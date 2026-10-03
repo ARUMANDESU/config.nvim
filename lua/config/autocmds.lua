@@ -4,6 +4,23 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.hl.on_yank() end,
 })
 
+-- Neovim detects compose files as plain yaml. docker-language-server only
+-- attaches to yaml.docker-compose, so tag them here.
+vim.filetype.add {
+  filename = {
+    ['compose.yaml'] = 'yaml.docker-compose',
+    ['compose.yml'] = 'yaml.docker-compose',
+    ['docker-compose.yaml'] = 'yaml.docker-compose',
+    ['docker-compose.yml'] = 'yaml.docker-compose',
+  },
+  -- Positive priority: plain patterns are only consulted after the .yaml
+  -- extension rule has already claimed the file.
+  pattern = {
+    ['compose%..*%.ya?ml'] = { 'yaml.docker-compose', { priority = 10 } }, -- compose.prod.yaml
+    ['docker%-compose%..*%.ya?ml'] = { 'yaml.docker-compose', { priority = 10 } },
+  },
+}
+
 -- Neo-tree's green accents, reapplied whenever a colorscheme loads.
 local function set_neotree_highlights()
   vim.api.nvim_set_hl(0, 'NeoTreeDirectoryIcon', { fg = '#a7c080' })
