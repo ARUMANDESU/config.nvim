@@ -81,6 +81,8 @@ return {
         'dockerfile-language-server', -- the only one with Dockerfile instruction completion
         'dockerfmt',
         'mbake',
+        'clangd',
+        'clang-format',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

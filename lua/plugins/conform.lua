@@ -26,6 +26,7 @@ return {
         sql = { 'sqruff' },
         dockerfile = { 'dockerfmt' },
         makefile = { 'mbake' },
+        c = { 'clang-format' },
       },
     },
   },
