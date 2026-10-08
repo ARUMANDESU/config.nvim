@@ -6,9 +6,17 @@ return {
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
   {
     'Wansmer/treesj',
-    keys = { '<space>m' },
+    keys = {
+      { '<leader>m', function() require('treesj').toggle() end, desc = 'Toggle Split/Join' },
+      { '<leader>M', function() require('treesj').toggle { split = { recursive = true } } end, desc = 'Toggle Split/Join Recursively' },
+      { '<leader>ms', function() require('treesj').split() end, desc = 'Split block' },
+      { '<leader>mj', function() require('treesj').join() end, desc = 'Join block' },
+    },
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    config = function() require('treesj').setup {} end,
+    opts = {
+      use_default_keymaps = false,
+      max_join_length = 120,
+    },
   },
   {
     'folke/flash.nvim',
