@@ -60,12 +60,6 @@ return {
             useany = false,
           },
         },
-        clangd = {
-          cmd = {
-            'clangd',
-            '--fallback-style={BasedOnStyle: LLVM, UseTab: Always, IndentWidth: 4, TabWidth: 4}',
-          },
-        },
       }
 
       local ensure_installed = vim.tbl_keys(servers)
