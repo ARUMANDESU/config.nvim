@@ -111,4 +111,45 @@ return {
       },
     },
   },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      local opts = {
+        options = {
+          icons_enabled = true,
+          theme = 'gruvbox_dark',
+        },
+        sections = {},
+        inactive_sections = {},
+        tabline = {},
+        winbar = {
+          lualine_a = { 'mode' },
+          lualine_b = { 'branch', 'diff', 'diagnostics' },
+          lualine_c = { 'filename' },
+          lualine_x = { 'encoding', 'fileformat', 'filetype' },
+          lualine_y = { 'selectioncount', 'progress' },
+          lualine_z = { 'location' },
+        },
+        inactive_winbar = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = { 'filename' },
+          lualine_x = { 'location' },
+          lualine_y = {},
+          lualine_z = {},
+        },
+        extensions = {},
+      }
+
+      require('lualine').setup(opts)
+
+      vim.api.nvim_create_autocmd('ColorScheme', {
+        group = vim.api.nvim_create_augroup('LualineReapply', { clear = true }),
+        callback = function()
+          vim.schedule(function() require('lualine').setup(opts) end)
+        end,
+      })
+    end,
+  },
 }

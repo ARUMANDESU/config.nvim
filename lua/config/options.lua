@@ -4,6 +4,10 @@ vim.o.relativenumber = true
 vim.o.mouse = 'a'
 vim.o.showmode = false -- already in the statusline
 
+vim.o.laststatus = 0 -- disable statusline
+vim.o.ruler = false
+vim.o.cmdheight = 0
+
 -- Scheduled after UiEnter: setting it eagerly costs startup time.
 vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
