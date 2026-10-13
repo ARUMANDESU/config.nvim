@@ -60,6 +60,19 @@ return {
     opts = {},
   },
 
+  {
+    'shortcuts/no-neck-pain.nvim',
+    keys = {
+      { '<leader>tc', '<cmd>NoNeckPain<CR>', desc = '[T]oggle [C]entered buffer (left padding)' },
+    },
+    opts = {
+      width = 100,
+      buffers = {
+        right = { enabled = false },
+      },
+    },
+  },
+
   { -- Shows pending keybinds
     'folke/which-key.nvim',
     event = 'VimEnter',
