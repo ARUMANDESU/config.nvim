@@ -45,3 +45,5 @@ vim.diagnostic.config {
   virtual_lines = false,
   jump = { float = true }, -- show the float when jumping with [d / ]d
 }
+
+vim.o.autoread = true
