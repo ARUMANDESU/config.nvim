@@ -7,8 +7,8 @@ return {
   {
     'Wansmer/treesj',
     keys = {
-      { '<leader>m', function() require('treesj').toggle() end, desc = 'Toggle Split/Join' },
-      { '<leader>M', function() require('treesj').toggle { split = { recursive = true } } end, desc = 'Toggle Split/Join Recursively' },
+      { '<leader>mm', function() require('treesj').toggle() end, desc = 'Toggle Split/Join' },
+      { '<leader>mM', function() require('treesj').toggle { split = { recursive = true } } end, desc = 'Toggle Split/Join Recursively' },
       { '<leader>ms', function() require('treesj').split() end, desc = 'Split block' },
       { '<leader>mj', function() require('treesj').join() end, desc = 'Join block' },
     },
@@ -82,8 +82,11 @@ return {
       spec = {
         { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk | [H]arpoon', mode = { 'n', 'v' } },
-        { '<leader>b', group = '[B]uffer' },
+        { '<leader>g', group = '[G]it hunk', mode = { 'n', 'v' } },
+        { '<leader>h', group = '[H]arpoon' },
+        { '<leader>m', group = 'Split/Join ([M]ultiline)' },
+        { '<leader>q', group = '[Q]uickfix' },
+        { '<leader>l', group = '[L]ocation list' },
       },
     },
   },
