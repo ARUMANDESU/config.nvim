@@ -48,3 +48,15 @@ vim.api.nvim_create_autocmd('ColorScheme', {
   group = vim.api.nvim_create_augroup('flash-highlights', { clear = true }),
   callback = set_flash_highlights,
 })
+
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI', 'TermLeave' }, {
+  pattern = '*',
+  callback = function()
+    if vim.fn.mode() ~= 'c' then vim.cmd 'checktime' end
+  end,
+})
+
+-- optional: tell you when it happened
+vim.api.nvim_create_autocmd('FileChangedShellPost', {
+  callback = function() vim.notify('File changed on disk, buffer reloaded', vim.log.levels.INFO) end,
+})
