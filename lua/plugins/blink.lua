@@ -18,13 +18,19 @@ return {
 
           require 'snippets'
 
-          vim.keymap.set('i', '<C-E>', function() ls.expand() end, { silent = true, desc = 'Expand snippet' })
+          -- <C-e>/<C-n>/<C-p> belong to blink's default preset, so snippets use <C-s>/<C-j>.
+          vim.keymap.set({ 'i', 's' }, '<C-S>', function()
+            if ls.expandable() then
+              ls.expand()
+            elseif ls.choice_active() then
+              require 'luasnip.extras.select_choice'()
+            end
+          end, { silent = true, desc = 'Expand snippet / pick choice' })
           vim.keymap.set({ 'i', 's' }, '<C-L>', function() ls.jump(1) end, { silent = true, desc = 'Next snippet node' })
           vim.keymap.set({ 'i', 's' }, '<C-H>', function() ls.jump(-1) end, { silent = true, desc = 'Previous snippet node' })
-          vim.keymap.set({ 'i', 's' }, '<C-N>', function()
+          vim.keymap.set({ 'i', 's' }, '<C-J>', function()
             if ls.choice_active() then ls.change_choice(1) end
           end, { silent = true, desc = 'Next snippet choice' })
-          vim.keymap.set({ 'i', 's' }, '<C-P>', '<CMD>lua require("luasnip.extras.select_choice")()<CR>', { silent = true, desc = 'Pick snippet choice' })
         end,
       },
     },
